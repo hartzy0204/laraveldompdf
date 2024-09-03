@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    hakdog
+    <div style="position: absolute; left: 50px">{{$user['name']}}</div>
 </body>
 </html>

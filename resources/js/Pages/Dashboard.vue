@@ -4,10 +4,10 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
+
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
-        <a href="/print">Print</a>
-
+        <a :href="route('print', $page.props.auth.user.id)">Print</a>
     </AuthenticatedLayout>
 </template>
