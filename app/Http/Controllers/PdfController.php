@@ -11,6 +11,7 @@ class PdfController extends Controller
 {
     public function index($id)
     {
+
         // dd($request->all());
 
        $user = User::findOrFail($id);

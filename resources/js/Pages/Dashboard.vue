@@ -1,13 +1,15 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-</script>
-
 <template>
-
-    <Head title="Dashboard" />
-
-    <AuthenticatedLayout>
-        <a :href="route('print', $page.props.auth.user.id)">Print</a>
-    </AuthenticatedLayout>
+    <a :href="route('print', id)" target="_blank">Print</a>
 </template>
+
+<script>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+export default {
+    layout: AuthenticatedLayout,
+    data() {
+        return {
+            id: this.$page.props.auth.user.id
+        }
+    }
+}
+</script>
