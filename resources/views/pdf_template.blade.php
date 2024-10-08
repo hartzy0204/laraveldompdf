@@ -9,7 +9,8 @@
 
 <body>
  <!-- php artisan storage:link -->
-    <img src="{{ public_path('storage/1228259.jpeg') }}" alt="">
+    <!-- <img src="{{ public_path('storage/1228259.jpeg') }}" alt=""> -->
+    <p>{{$text}}</p>
     <div style="position: absolute; left: 50px">{{$user['name']}}</div>
 </body>
 

@@ -3,25 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use PDF;
+
 
 class PdfController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
 
+        $user = User::findOrFail($request->id);
+        $text = $request->text;
 
-       $user = User::findOrFail($id);
-
-
-        $pdf = PDF::loadView('pdf_template', compact('user'));
-
+        $pdf = Pdf::loadView('pdf_template', compact('user', 'text'))
+            ->setPaper('letter');
         $fileName = 'document.pdf';
 
         Storage::put('public/pdfs/' . $fileName, $pdf->output());
 
-        return $pdf->stream($fileName);
+        return redirect()->back()->with([
+            'stream' => base64_encode($pdf->output())
+        ]);
     }
 }

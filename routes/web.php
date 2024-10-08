@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-route::get('print/{id}', [PdfController::class, 'index'])->name('print');
+route::post('print', [PdfController::class, 'index'])->name('print');
 Route::get('generate',[PdfController::class, 'generate'])->name('generate');
 
 require __DIR__.'/auth.php';
